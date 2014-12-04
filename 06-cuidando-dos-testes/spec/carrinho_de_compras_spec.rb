@@ -6,6 +6,16 @@ describe CarrinhoDeCompras do
   before :each do
     @carrinho = CarrinhoDeCompras.new
   end
+  it 'deve adicionar itens' do
+    # garante que o carrinho está vazio
+    expect(@carrinho.itens).to be_empty
+
+    item = Item.new('Geladeira', 1, 900.0)
+    @carrinho << item
+
+    expect(@carrinho.itens.size).to eq(1)
+    expect(@carrinho.itens[0]).to eq(item)
+  end
   it 'deve retornar zero se carrinho vazio' do
     expect(@carrinho.maior_valor).to eq(0)
   end
