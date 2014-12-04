@@ -10,4 +10,10 @@ class Item
   def valor_total
     valor_unitario * quantidade
   end
+
+  def ==(outro_item)
+    descricao == outro_item.descricao &&
+      quantidade == outro_item.quantidade &&
+      valor_unitario == outro_item.valor_unitario
+  end
 end
