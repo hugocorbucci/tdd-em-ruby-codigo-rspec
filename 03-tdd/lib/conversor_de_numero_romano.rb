@@ -11,22 +11,17 @@ class ConversorDeNumeroRomano
     'M' => 1000,
   }
   def converte numero_em_romano
-    acumulador = 0
     ultimo_vizinho_da_direita = 0
-    numero_em_romano.split('').reverse.each do |digito_em_romano|
-      # pega o inteiro referente ao simbolo atual
-      atual = TABELA[digito_em_romano]
-
-      # se o da direita for menor, o multiplicaremos
-      # por -1 para torná-lo negativo
+    digitos = numero_em_romano.split('').
+      map{|digito| TABELA[digito]}
+    digitos.reverse.reduce(0) do |acumulador, digito|
       multiplicador = 1
-      multiplicador = -1 if(atual < ultimo_vizinho_da_direita)
-
-      acumulador += atual * multiplicador
+      multiplicador = -1 if digito < ultimo_vizinho_da_direita
 
       # atualiza o vizinho da direita
-      ultimo_vizinho_da_direita = atual
+      ultimo_vizinho_da_direita = digito
+
+      acumulador + digito * multiplicador
     end
-    acumulador
   end
 end
