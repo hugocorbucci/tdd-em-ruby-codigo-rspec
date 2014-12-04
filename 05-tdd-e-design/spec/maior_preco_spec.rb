@@ -21,4 +21,15 @@ describe MaiorPreco do
 
     expect(valor).to eq(900.0)
   end
+  it 'deve retornar maior valor se carrinho contem muitos elementos' do
+    carrinho = CarrinhoDeCompras.new
+    carrinho << Item.new('Geladeira', 1, 900.0)
+    carrinho << Item.new('Fogão', 1, 1500.0)
+    carrinho << Item.new('Máquina de Lavar', 1, 750.0)
+
+    algoritmo = MaiorPreco.new
+    valor = algoritmo.encontra carrinho
+
+    expect(valor).to eq(1500.0)
+  end
 end
