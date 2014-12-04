@@ -19,4 +19,20 @@ describe CalculadoraDeSalario do
 
     expect(salario).to eq(4000 * 0.8)
   end
+  it 'deve calcular salario para DBAs com salario abaixo do limite' do
+    calculadora = CalculadoraDeSalario.new
+    desenvolvedor = Funcionario.new('Mauricio', 1500.0, Cargo::DBA)
+
+    salario = calculadora.calcula_salario desenvolvedor
+
+    expect(salario).to eq(1500 * 0.85)
+  end
+  it 'deve calcular salario para DBAs com salario acima do limite' do
+    calculadora = CalculadoraDeSalario.new
+    desenvolvedor = Funcionario.new('Mauricio', 4500.0, Cargo::DBA)
+
+    salario = calculadora.calcula_salario desenvolvedor
+
+    expect(salario).to eq(4500 * 0.75)
+  end
 end
