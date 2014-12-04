@@ -15,4 +15,14 @@ describe ProcessadorDeBoletos do
     expect(fatura.pagamentos.size).to eq(1)
     expect(fatura.pagamentos[0].valor).to eq(150.0)
   end
+  it 'deve marcar fatura como paga caso boleto unico pague tudo' do
+    processador = ProcessadorDeBoletos.new
+
+    fatura = Fatura.new('Cliente', 150.0)
+    b1 = Boleto.new(150.0)
+
+    processador.processa([b1], fatura)
+
+    expect(fatura).to be_paga
+  end
 end
