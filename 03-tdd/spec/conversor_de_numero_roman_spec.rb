@@ -13,4 +13,10 @@ describe ConversorDeNumeroRomano do
     numero = romano.converte 'V'
     expect(numero).to eq(5)
   end
+
+  it 'deve entender o simbolo II' do
+    romano = ConversorDeNumeroRomano.new
+    numero = romano.converte 'II'
+    expect(numero).to eq(2)
+  end
 end
