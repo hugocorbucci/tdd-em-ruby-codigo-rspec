@@ -9,7 +9,7 @@ describe GeradorDeNotaFiscal do
     # marcando o que esperamos que aconteça
     expect(dao).to receive(:persiste)
 
-    gerador = GeradorDeNotaFiscal.new
+    gerador = GeradorDeNotaFiscal.new dao
     pedido = Pedido.new('Mauricio', 1000, 1)
 
     nf = gerador.gera pedido
