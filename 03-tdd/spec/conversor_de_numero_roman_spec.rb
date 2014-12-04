@@ -25,4 +25,10 @@ describe ConversorDeNumeroRomano do
     numero = romano.converte 'XXII'
     expect(numero).to eq(22)
   end
+
+  it 'deve entender o simbolo IX' do
+    romano = ConversorDeNumeroRomano.new
+    numero = romano.converte 'IX'
+    expect(numero).to eq(9)
+  end
 end
