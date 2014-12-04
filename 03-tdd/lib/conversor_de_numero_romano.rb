@@ -1,11 +1,15 @@
 #encoding: UTF-8
 class ConversorDeNumeroRomano
+  TABELA = {
+    'I' => 1,
+    'V' => 5,
+    'X' => 10,
+    'L' => 50,
+    'C' => 100,
+    'D' => 500,
+    'M' => 1000,
+  }
   def converte numero_em_romano
-    if numero_em_romano == 'I'
-      return 1
-    elsif numero_em_romano == 'V'
-      return 5
-    end
-    return 0 
+    TABELA[numero_em_romano]
   end
 end
