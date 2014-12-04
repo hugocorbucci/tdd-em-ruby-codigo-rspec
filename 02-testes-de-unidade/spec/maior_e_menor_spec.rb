@@ -17,4 +17,14 @@ describe MaiorEMenor do
     expect(algoritmo.menor.nome).to eq('Jogo de pratos')
     expect(algoritmo.maior.nome).to eq('Geladeira')
   end
+  it 'deveria achar preço com apenas um produto' do
+    carrinho = CarrinhoDeCompras.new
+    carrinho << Produto.new('Geladeira', 450.0)
+
+    algoritmo = MaiorEMenor.new
+    algoritmo.encontra carrinho
+
+    expect(algoritmo.menor.nome).to eq('Geladeira')
+    expect(algoritmo.maior.nome).to eq('Geladeira')
+  end
 end
