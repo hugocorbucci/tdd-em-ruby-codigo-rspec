@@ -15,10 +15,12 @@ describe GeradorDeNotaFiscal do
     nf = gerador.gera pedido
   end
   it 'deve consultar a tabela para calcular valor' do
+    relogio = double
+    allow(relogio).to receive(:hoje)
     tabela = double
     expect(tabela).to receive(:[]).with(1000.0).and_return(0.2)
-
-    gerador = GeradorDeNotaFiscal.new [], tabela
+    
+    gerador = GeradorDeNotaFiscal.new [], relogio, tabela
     pedido = Pedido.new('Mauricio', 1000, 1)
 
     nf = gerador.gera pedido
