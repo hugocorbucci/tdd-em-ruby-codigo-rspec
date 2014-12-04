@@ -6,12 +6,8 @@ class ProcessadorDeBoletos
     valor_total = 0
     boletos.each do |boleto|
       pagamento = Pagamento.new boleto.valor, MeioDePagamento::BOLETO
-      fatura.pagamentos << pagamento
-
-      valor_total += boleto.valor
+      fatura.adiciona_pagamento pagamento
     end
-
-    fatura.paga = true if valor_total >= fatura.valor
   end
 end
 

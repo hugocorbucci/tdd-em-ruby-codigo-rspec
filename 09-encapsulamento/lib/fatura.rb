@@ -5,8 +5,12 @@ class Fatura
     @pagamentos = []
     @valor = valor
   end
-  def paga=(paga)
-    @paga = paga
+  def adiciona_pagamento pagamento
+    @pagamentos << pagamento
+
+    valor_total = @pagamentos.map(&:valor).reduce(:+)
+
+    @paga = true if valor_total >= @valor
   end
   def paga?
     @paga
