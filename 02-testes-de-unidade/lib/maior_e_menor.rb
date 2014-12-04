@@ -6,7 +6,8 @@ class MaiorEMenor
     carrinho.produtos.each do |produto|
       if (@menor.nil? || produto.valor < @menor.valor)
         @menor = produto
-      elsif (@maior.nil? || produto.valor > @maior.valor)
+      end
+      if (@maior.nil? || produto.valor > @maior.valor)
         @maior = produto
       end
     end
