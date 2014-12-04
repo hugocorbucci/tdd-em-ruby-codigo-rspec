@@ -22,7 +22,7 @@ class ConversorDeNumeroRomano
       multiplicador = 1
       multiplicador = -1 if(atual < ultimo_vizinho_da_direita)
 
-      acumulador += TABELA[digito_em_romano] * multiplicador
+      acumulador += atual * multiplicador
 
       # atualiza o vizinho da direita
       ultimo_vizinho_da_direita = atual
