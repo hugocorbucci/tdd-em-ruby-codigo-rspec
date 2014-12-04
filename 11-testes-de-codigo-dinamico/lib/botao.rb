@@ -1,11 +1,10 @@
 #encoding: UTF-8
 
 class Botao
-  def initialize(acao, *argumentos)
+  def initialize(acao)
     @acao = acao
-    @argumentos = argumentos
   end
   def executa_em(alvo)
-    alvo.send(@acao, *@argumentos)
+    @acao.call(alvo)
   end
 end
