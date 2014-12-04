@@ -3,24 +3,13 @@ require_relative '../lib/pedido.rb'
 require_relative '../lib/gerador_de_nota_fiscal.rb'
 
 describe GeradorDeNotaFiscal do
-  it 'deve persistir NF gerada' do
-    dao = double
-    expect(dao).to receive(:persiste)
-    sap = double
-    allow(sap).to receive(:envia)
-
-    gerador = GeradorDeNotaFiscal.new dao, sap
-    pedido = Pedido.new('Mauricio', 1000, 1)
-
-    nf = gerador.gera pedido
-  end
-  it 'deve enviar NF gerada para SAP' do
-    dao = double
-    allow(dao).to receive(:persiste)
-    sap = double
-    expect(sap).to receive(:envia)
-
-    gerador = GeradorDeNotaFiscal.new dao, sap
+  it 'deve invocar ações posteriores' do
+    acao1 = double
+    expect(acao1).to receive(:executa)
+    acao2 = double
+    expect(acao2).to receive(:executa)
+    
+    gerador = GeradorDeNotaFiscal.new [acao1, acao2]
     pedido = Pedido.new('Mauricio', 1000, 1)
 
     nf = gerador.gera pedido
